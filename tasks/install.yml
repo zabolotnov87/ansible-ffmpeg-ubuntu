@@ -1,0 +1,10 @@
+- include: install/prepare.yml
+- include: install/yasm.yml
+- include: install/nasm.yml
+- include: install/x264.yml
+- include: install/x265.yml
+- include: install/aac.yml
+- include: install/mp3lame.yml
+- include: install/opus.yml
+- include: install/vpx.yml
+- include: install/ffmpeg.yml

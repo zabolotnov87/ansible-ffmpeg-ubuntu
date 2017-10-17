@@ -1,0 +1,5 @@
+- assert:
+    that:
+      - "'{{ ffmpeg_action }}' in ['install', 'uninstall', 'update']"
+
+- include: '{{ ffmpeg_action }}.yml'

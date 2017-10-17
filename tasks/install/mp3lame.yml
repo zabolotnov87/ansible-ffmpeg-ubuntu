@@ -1,0 +1,12 @@
+- name: download lame
+  unarchive:
+    src: http://downloads.sourceforge.net/project/lame/lame/3.98.4/lame-3.98.4.tar.gz
+    dest: '{{ ffmpeg_source_dir }}'
+    remote_src: yes
+
+- name: compile lame
+  shell: 'cd {{ ffmpeg_source_dir }}/lame*; {{ item }}'
+  with_items:
+    - ./configure --prefix={{ ffmpeg_build_dir }} --enable-nasm --disable-shared
+    - make
+    - make install

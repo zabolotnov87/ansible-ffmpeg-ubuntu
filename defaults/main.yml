@@ -1,0 +1,21 @@
+ffmpeg_source_dir: /usr/local/ffmpeg_sources
+ffmpeg_build_dir: /usr/local/ffmpeg_build
+ffmpeg_bin_dir: /usr/local/bin
+ffmpeg_action: install
+
+ffmpeg_config: |
+  --pkg-config-flags="--static" \
+  --extra-cflags="-I{{ ffmpeg_build_dir }}/include" \
+  --extra-ldflags="-L{{ ffmpeg_build_dir }}/lib" \
+  --enable-gpl \
+  --enable-libass \
+  --enable-libfdk-aac \
+  --enable-libfreetype \
+  --enable-libmp3lame \
+  --enable-libopus \
+  --enable-libtheora \
+  --enable-libvorbis \
+  --enable-libvpx \
+  --enable-libx264 \
+  --enable-libx265 \
+  --enable-nonfree

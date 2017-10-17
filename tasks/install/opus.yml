@@ -1,0 +1,12 @@
+- name: download opus
+  unarchive:
+    src: https://archive.mozilla.org/pub/opus/opus-1.1.5.tar.gz
+    dest: '{{ ffmpeg_source_dir }}'
+    remote_src: yes
+
+- name: compile opus
+  shell: 'cd {{ ffmpeg_source_dir }}/opus*; {{ item }}'
+  with_items:
+    - ./configure --prefix={{ ffmpeg_build_dir }} --disable-shared
+    - make
+    - make install

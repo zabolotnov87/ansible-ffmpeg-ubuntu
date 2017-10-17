@@ -1,0 +1,16 @@
+galaxy_info:
+  author: Sergey Zabolotnov
+  description: A role to install ffmpeg 3.4 from source code
+  license: MIT
+  min_ansible_version: 2.0
+  platforms:
+  - name: Ubuntu
+    versions:
+    - all
+  - name: Debian
+    versions:
+    - all
+  - name: Mint
+    versions:
+    - all
+  galaxy_tags: ['ffmpeg', 'ubuntu', 'debian', 'mint']

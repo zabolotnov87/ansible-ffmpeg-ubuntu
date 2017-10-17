@@ -1,0 +1,11 @@
+- name: clone latest x265
+  hg:
+    repo: https://bitbucket.org/multicoreware/x265
+    dest: '{{ ffmpeg_source_dir }}/x265'
+
+- name: compile x265
+  shell: 'cd {{ ffmpeg_source_dir }}/x265/build/linux; {{ item }}'
+  with_items:
+    - cmake -G "Unix Makefiles" -DCMAKE_INSTALL_PREFIX={{ ffmpeg_build_dir }} -DENABLE_SHARED:bool=off ../../source
+    - make
+    - make install

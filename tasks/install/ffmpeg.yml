@@ -1,0 +1,14 @@
+- name: download ffmpeg sources
+  unarchive:
+    src: http://ffmpeg.org/releases/ffmpeg-3.4.tar.gz
+    dest: '{{ ffmpeg_source_dir }}'
+    remote_src: yes
+
+- name: compile ffmpeg
+  shell: 'cd {{ ffmpeg_source_dir }}/ffmpeg*; {{ item }}'
+  environment:
+    PKG_CONFIG_PATH: '{{ ffmpeg_build_dir }}/lib/pkgconfig'
+  with_items:
+    - ./configure --prefix={{ ffmpeg_build_dir }} --bindir={{ ffmpeg_bin_dir }} {{ ffmpeg_config }}
+    - make
+    - make install

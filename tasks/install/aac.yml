@@ -1,0 +1,13 @@
+- name: download fdk-aac
+  unarchive:
+    src: https://github.com/mstorsjo/fdk-aac/tarball/master
+    dest: '{{ ffmpeg_source_dir }}'
+    remote_src: yes
+
+- name: compile fdk-aac
+  shell: 'cd {{ ffmpeg_source_dir }}/mstorsjo-fdk-aac*; {{ item }}'
+  with_items:
+    - autoreconf -fiv
+    - ./configure --prefix={{ ffmpeg_build_dir }} --disable-shared
+    - make
+    - make install

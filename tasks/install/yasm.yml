@@ -1,0 +1,12 @@
+- name: download yasm
+  unarchive:
+    src: http://www.tortall.net/projects/yasm/releases/yasm-1.3.0.tar.gz
+    dest: '{{ ffmpeg_source_dir }}'
+    remote_src: yes
+
+- name: compile yasm
+  shell: 'cd {{ ffmpeg_source_dir }}/yasm*; {{ item }}'
+  with_items:
+    - ./configure --prefix={{ ffmpeg_build_dir }} --bindir={{ ffmpeg_bin_dir }}
+    - make
+    - make install

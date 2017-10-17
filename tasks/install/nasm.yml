@@ -1,0 +1,13 @@
+- name: download nasm
+  unarchive:
+    src: http://www.nasm.us/pub/nasm/releasebuilds/2.13.01/nasm-2.13.01.tar.bz2
+    dest: '{{ ffmpeg_source_dir }}'
+    remote_src: yes
+
+- name: compile nasm
+  shell: 'cd {{ ffmpeg_source_dir }}/nasm*; {{ item }}'
+  with_items:
+    - ./autogen.sh
+    - ./configure --prefix={{ ffmpeg_build_dir }} --bindir={{ ffmpeg_bin_dir }}
+    - make
+    - make install

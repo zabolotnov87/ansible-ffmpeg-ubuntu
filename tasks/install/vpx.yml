@@ -1,0 +1,12 @@
+- name: clone latest libvpx
+  git:
+    repo: https://chromium.googlesource.com/webm/libvpx.git
+    dest: '{{ ffmpeg_source_dir }}/libvpx'
+    depth: 1
+
+- name: compile libvpx
+  shell: 'cd {{ ffmpeg_source_dir }}/libvpx; {{ item }}'
+  with_items:
+    - ./configure --prefix={{ ffmpeg_build_dir }} --disable-examples --disable-unit-tests --enable-vp9-highbitdepth
+    - make
+    - make install

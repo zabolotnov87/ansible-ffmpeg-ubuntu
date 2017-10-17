@@ -1,0 +1,12 @@
+- name: download x264
+  unarchive:
+    src: http://download.videolan.org/pub/x264/snapshots/last_x264.tar.bz2
+    dest: '{{ ffmpeg_source_dir }}'
+    remote_src: yes
+
+- name: compile x264
+  shell: 'cd {{ ffmpeg_source_dir }}/x264-snapshot*; {{ item }}'
+  with_items:
+    - ./configure --prefix={{ ffmpeg_build_dir }} --bindir={{ ffmpeg_bin_dir }} --enable-static --disable-opencl
+    - make
+    - make install

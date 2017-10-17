@@ -1,0 +1,13 @@
+- name: uninstall ffmpeg
+  file: name={{ item }} state=absent
+  with_items:
+    - '{{ ffmpeg_build_dir }}'
+    - '{{ ffmpeg_source_dir }}'
+    - '{{ ffmpeg_bin_dir }}/ffmpeg'
+    - '{{ ffmpeg_bin_dir }}/ffprobe'
+    - '{{ ffmpeg_bin_dir }}/ffplay'
+    - '{{ ffmpeg_bin_dir }}/ffserver'
+    - '{{ ffmpeg_bin_dir }}/x264'
+    - '{{ ffmpeg_bin_dir }}/x265'
+    - '{{ ffmpeg_bin_dir }}/yasm'
+    - '{{ ffmpeg_bin_dir }}/nasm'

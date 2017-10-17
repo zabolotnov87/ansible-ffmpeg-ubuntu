@@ -1,0 +1,23 @@
+- name: apt-get update
+  apt: update_cache=yes
+
+- name: install dependencies
+  action: apt name={{ item }} state=present
+  with_items:
+    - autoconf
+    - automake
+    - build-essential
+    - libass-dev
+    - libfreetype6-dev
+    - libtheora-dev
+    - libtool
+    - libvorbis-dev
+    - pkg-config
+    - texinfo
+    - wget
+    - zlib1g-dev
+    - cmake
+    - mercurial
+
+- name: make source folder
+  file: path={{ ffmpeg_source_dir }} state=directory
